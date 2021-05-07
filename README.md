@@ -1,5 +1,7 @@
 # Closest-pair-of-points
-
+    1.DIVIDE-CONQUER ALGORITHM
+	2.Finding closest pair of coordinates in 2D
+	3.NAIVE AND EFFICIENT APPROACH EMPLEMENTED
 ### Naive Implementation
 ```
 def naive_closest_pair(plane):
