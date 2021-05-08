@@ -3,19 +3,14 @@
 	2.Finding closest pair of coordinates in 2D
 	3.NAIVE AND EFFICIENT APPROACH EMPLEMENTED
 ### Naive Implementation
+- Finds the closest pair of points in the plane using the bruteforce approach
+- Args:
+  	- plane: List of points [(p1_x, p1_y), (p2_x, p2_y), ...]
+- Returns:
+	- Distance between closest pair of points and closest pair 
+        of points: [dist_bw_p1_p2, (p1_x, p1_y), (p2_x, p2_y)]
 ```
 def naive_closest_pair(plane):
-    """
-    Find the closest pair of points in the plane using the brute
-    force approach
-
-    Args:
-        plane: List of points [(p1_x, p1_y), (p2_x, p2_y), ...]
-
-    Returns:
-        Distance between closest pair of points and closest pair 
-        of points: [dist_bw_p1_p2, (p1_x, p1_y), (p2_x, p2_y)]
-    """
     d=dist(plane[0],plane[1])
     p1=plane[0]
     p2=plane[1]
@@ -30,38 +25,31 @@ def naive_closest_pair(plane):
             
 ```
 ### Efficient Closest Pair
-Recurisve algorithm which finds using strip method.
+Recursive algorithm which finds using strip method.
+##### Function *efficient_closest_pair function*
+- Find the closest pair of points in the plane using the divide and conquer approach __by calling efficient_closest_pair_routine__.
+- Args:
+ 	- plane: List of points [(p1_x, p1_y), (p2_x, p2_y), ...]
+- Returns:
+	- Distance between closest pair of points and closest pair 
+        of points: [dist_bw_p1_p2, (p1_x, p1_y), (p2_x, p2_y)]
 ```
 def efficient_closest_pair(points):
-    """
-    Find the closest pair of points in the plane using the divide
-    and conquer approach by calling efficient_closest_pair_routine.
-
-    Args:
-        plane: List of points [(p1_x, p1_y), (p2_x, p2_y), ...]
-
-    Returns:
-        Distance between closest pair of points and closest pair 
-        of points: [dist_bw_p1_p2, (p1_x, p1_y), (p2_x, p2_y)]
-    """
     p_x=sort_points_by_X(points)
     result=efficient_closest_pair_routine(p_x)
     return result
 
 ```
+##### Function *efficient_closest_pair_routine*
+- This routine calls itself recursivly to find the closest pair of points in the plane. 
+- Args:
+	- points: List of points sorted by X coordinate
+- Returns:
+	- Distance between closest pair of points and closest pair 
+        of points: [dist_bw_p1_p2, (p1_x, p1_y), (p2_x, p2_y)]
+
 ```
 def efficient_closest_pair_routine(points):
-    """
-    This routine calls itself recursivly to find the closest pair of
-    points in the plane. 
-
-    Args:
-        points: List of points sorted by X coordinate
-
-    Returns:
-        Distance between closest pair of points and closest pair 
-        of points: [dist_bw_p1_p2, (p1_x, p1_y), (p2_x, p2_y)]
-    """
     l=len(points)
     if (l<=3):
         return naive_closest_pair(points)
